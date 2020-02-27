@@ -1,0 +1,14 @@
+{
+  "name": "gas-auto-click-point-income",
+  "version": "1.0.0",
+  "author": "Hiroto Kitazawa <hiroto.ktzw@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@google/clasp": "^2.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-googleappsscript": "^1.0.3"
+  }
+}
