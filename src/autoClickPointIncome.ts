@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-function autoClickPointIncome () {
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+function autoClickPointIncome (): void {
   const threads = GmailApp.search('ポイントインカム クリック from:mag@pointi.jp');
 
   threads.forEach(thread => {
@@ -14,7 +14,7 @@ function autoClickPointIncome () {
   });
 }
 
-function pickUrlsFromMessageBody (messageBody) {
+function pickUrlsFromMessageBody (messageBody: string): string[] {
   const pointLines = messageBody.match(/クリックで(.+)ptゲット(\r\n|\n|\r)https(.+)(\r\n|\n|\r)/ig);
 
   if (pointLines === null) {
@@ -26,13 +26,15 @@ function pickUrlsFromMessageBody (messageBody) {
   });
 }
 
-function clickUrl (url) {
+function clickUrl (url: string): boolean {
   Logger.log(`Click : ${url}`);
   try {
-    return UrlFetchApp.fetch(url);
+    UrlFetchApp.fetch(url);
+
+    return true;
   } catch (e) {
     console.log(e);
     Logger.log(e);
-    return e;
+    return false;
   }
 }
