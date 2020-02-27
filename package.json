@@ -4,6 +4,11 @@
   "author": "Hiroto Kitazawa <hiroto.ktzw@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "push": "clasp push",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ext .js --ignore-path .gitignore ."
+  },
   "devDependencies": {
     "@google/clasp": "^2.3.0",
     "babel-eslint": "^10.1.0",
