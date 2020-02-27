@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function autoClickPointIncome () {
   const threads = GmailApp.search('ポイントインカム クリック from:mag@pointi.jp');
 
