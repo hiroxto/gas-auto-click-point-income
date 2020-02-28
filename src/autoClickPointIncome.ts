@@ -7,8 +7,14 @@ function autoClickPointIncome (): void {
     messages.forEach(message => {
       const messageBody = message.getPlainBody();
       const urls = pickUrlsFromMessageBody(messageBody);
-      urls.forEach(url => clickUrl(url));
 
+      if (urls.length === 0) {
+        Logger.log('urls is empty.');
+        Logger.log(message);
+        return;
+      }
+
+      urls.forEach(url => clickUrl(url));
       thread.moveToTrash();
     });
   });
