@@ -5,16 +5,19 @@ module.exports = {
   },
   env: {
     'googleappsscript/googleappsscript': true,
+    'jest/globals': true,
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:promise/recommended',
+    'plugin:jest/recommended',
     'standard',
   ],
   plugins: [
     '@typescript-eslint',
     'promise',
     'googleappsscript',
+    'jest',
   ],
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
