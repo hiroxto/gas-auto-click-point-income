@@ -1,8 +1,7 @@
 // eslint-disable-next-line no-undef
 import GmailThread = GoogleAppsScript.Gmail.GmailThread;
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-function autoClickPointIncome (): void {
+export function autoClickPointIncome (): void {
   const threads = getGmailThreads();
 
   threads.forEach(thread => {
@@ -23,11 +22,11 @@ function autoClickPointIncome (): void {
   });
 }
 
-function getGmailThreads (): GmailThread[] {
+export function getGmailThreads (): GmailThread[] {
   return GmailApp.search('ポイントインカム クリック from:mag@pointi.jp');
 }
 
-function pickUrlsFromMessageBody (messageBody: string): string[] {
+export function pickUrlsFromMessageBody (messageBody: string): string[] {
   const pointLines = messageBody.match(/クリックで(.+)ptゲット(\r\n|\n|\r)https(.+)(\r\n|\n|\r)/ig);
 
   if (pointLines === null) {
@@ -39,7 +38,7 @@ function pickUrlsFromMessageBody (messageBody: string): string[] {
   });
 }
 
-function clickUrl (url: string): boolean {
+export function clickUrl (url: string): boolean {
   Logger.log(`Click : ${url}`);
   try {
     UrlFetchApp.fetch(url);
