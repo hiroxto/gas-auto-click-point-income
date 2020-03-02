@@ -5,6 +5,7 @@ module.exports = {
   },
   env: {
     'googleappsscript/googleappsscript': true,
+    'jest/globals': true,
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
