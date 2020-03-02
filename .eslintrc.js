@@ -15,6 +15,7 @@ module.exports = {
     '@typescript-eslint',
     'promise',
     'googleappsscript',
+    'jest',
   ],
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
