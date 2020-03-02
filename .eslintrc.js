@@ -10,6 +10,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:promise/recommended',
+    'plugin:jest/recommended',
     'standard',
   ],
   plugins: [
