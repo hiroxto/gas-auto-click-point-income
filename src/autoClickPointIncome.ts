@@ -5,6 +5,8 @@ import GmailThread = GoogleAppsScript.Gmail.GmailThread;
 function autoClickPointIncome (): void {
   const threads = getGmailThreads();
 
+  Logger.log(`Threads count : ${threads.length}`);
+
   threads.forEach(thread => {
     const messages = thread.getMessages();
     messages.forEach(message => {
