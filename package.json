@@ -7,7 +7,8 @@
   "scripts": {
     "push": "clasp push",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
-    "lint:fix": "eslint --fix --ext .js,.ts --ignore-path .gitignore ."
+    "lint:fix": "eslint --fix --ext .js,.ts --ignore-path .gitignore .",
+    "test": "jest"
   },
   "devDependencies": {
     "@google/clasp": "^2.3.0",
