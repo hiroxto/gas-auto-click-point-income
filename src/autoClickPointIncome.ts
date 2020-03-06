@@ -8,19 +8,18 @@ export function autoClickPointIncome (): void {
 
   threads.forEach(thread => {
     const messages = thread.getMessages();
-    messages.forEach(message => {
-      const messageBody = message.getPlainBody();
-      const urls = pickUrlsFromMessageBody(messageBody);
+    const message = messages[0];
+    const messageBody = message.getPlainBody();
+    const urls = pickUrlsFromMessageBody(messageBody);
 
-      if (urls.length === 0) {
-        Logger.log('urls is empty.');
-        Logger.log(message);
-        return;
-      }
+    if (urls.length === 0) {
+      Logger.log('urls is empty.');
+      Logger.log(message);
+      return;
+    }
 
-      urls.forEach(url => clickUrl(url));
-      thread.moveToTrash();
-    });
+    urls.forEach(url => clickUrl(url));
+    thread.moveToTrash();
   });
 }
 
