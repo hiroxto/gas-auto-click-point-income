@@ -43,7 +43,7 @@ export function pickUrlsFromMessageBody (messageBody: string): string[] {
 export function clickUrl (url: string): boolean {
   Logger.log(`Click : ${url}`);
   try {
-    UrlFetchApp.fetch(url);
+    UrlFetchApp.fetch(url, { followRedirects: true });
 
     return true;
   } catch (e) {
