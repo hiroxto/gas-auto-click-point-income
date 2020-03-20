@@ -28,15 +28,13 @@ export function getGmailThreads_ (): GmailThread[] {
 }
 
 export function pickUrlsFromMessageBody_ (messageBody: string): string[] {
-  const pointLines = messageBody.match(/クリックで(.+)ptゲット(\r\n|\n|\r)https(.+)(\r\n|\n|\r)/ig);
+  const pointLines = messageBody.match(/https:\/\/pointi\.jp\/al\/click_mail_magazine\.php(.+)(\r\n|\n|\r)/ig);
 
   if (pointLines === null) {
     return [];
   }
 
-  return pointLines.map(line => {
-    return line.match(/(\r\n|\n|\r)(.+)(\r\n|\n|\r)/)[2];
-  });
+  return pointLines.map(line => line.trim());
 }
 
 export function clickUrl_ (url: string): boolean {
