@@ -1,8 +1,8 @@
 import { pickUrlsFromMessageBody_ } from '~/autoClickPointIncome.ts';
 
 describe('pickUrlsFromMessageBody_', (): void => {
-  describe('valid urls', (): void => {
-    test('should return urls.', (): void => {
+  describe('URL の抽出が可能なメール', (): void => {
+    test('クリック系の URL を抽出する', (): void => {
       const messageBody = `
 ▼クリックで１ptゲット
 https://pointi.jp/al/click_mail_magazine.php?num=1
@@ -28,7 +28,7 @@ https://pointi.jp/
       expect(response).toStrictEqual(pickedUrls);
     });
 
-    test('クイズ系の URL でも URL を返す', (): void => {
+    test('クイズ系の URL を抽出する', (): void => {
       const messageBody = `
 ▼メリメロクイズ回答で[ ３pt! ]
 https://pointi.jp/al/click_mail_magazine.php?no=1
@@ -47,9 +47,9 @@ https://pointi.jp/
     });
   });
 
-  describe('invalid urls', (): void => {
-    describe('with http urls', (): void => {
-      test('should return empty.', (): void => {
+  describe('URL の抽出が不可能なメール', (): void => {
+    describe('HTTP な URL', (): void => {
+      test('何も返さない', (): void => {
         const messageBody = `
 ▼クリックで１ptゲット
 http://pointi.jp/al/click_mail_magazine.php?num=1
@@ -71,8 +71,8 @@ https://pointi.jp/
       });
     });
 
-    describe('with empty clickable urls', (): void => {
-      test('should return empty array.', (): void => {
+    describe('クリックする URL が存在しないメール', (): void => {
+      test('何も返さない', (): void => {
         const messageBody = `
 ▼詳細はこちらから
 https://pointi.jp/dummy/1
