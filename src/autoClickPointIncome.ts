@@ -10,7 +10,7 @@ export function autoClickPointIncome (): void {
     const messages = thread.getMessages();
     const message = messages[0];
     const messageBody = message.getPlainBody();
-    const urls = pickUrlsFromMessageBody(messageBody);
+    const urls = pickUrlsFromMessageBody_(messageBody);
 
     if (urls.length === 0) {
       Logger.log('urls is empty.');
@@ -27,7 +27,7 @@ export function getGmailThreads_ (): GmailThread[] {
   return GmailApp.search('ポイントインカム クリック from:mag@pointi.jp');
 }
 
-export function pickUrlsFromMessageBody (messageBody: string): string[] {
+export function pickUrlsFromMessageBody_ (messageBody: string): string[] {
   const pointLines = messageBody.match(/クリックで(.+)ptゲット(\r\n|\n|\r)https(.+)(\r\n|\n|\r)/ig);
 
   if (pointLines === null) {

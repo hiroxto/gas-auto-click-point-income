@@ -1,4 +1,4 @@
-import { pickUrlsFromMessageBody } from '~/autoClickPointIncome.ts';
+import { pickUrlsFromMessageBody_ } from '~/autoClickPointIncome.ts';
 
 describe('pickUrlsFromMessageBody', (): void => {
   describe('valid urls', (): void => {
@@ -20,7 +20,7 @@ https://dummy.example.com/path/to/click-1
 https://example.com/
 `;
       const urls = ['https://example.com/path/to/click-1', 'https://example.com/path/to/click-2', 'https://example.com/path/to/click-3'];
-      const response = pickUrlsFromMessageBody(messageBody);
+      const response = pickUrlsFromMessageBody_(messageBody);
       expect(response).toStrictEqual(urls);
     });
   });
@@ -44,7 +44,7 @@ https://dummy.example.com/path/to/click-1
 ■トップ
 https://example.com/
 `;
-        const response = pickUrlsFromMessageBody(messageBody);
+        const response = pickUrlsFromMessageBody_(messageBody);
         expect(response).toStrictEqual([]);
       });
     });
@@ -67,7 +67,7 @@ https://dummy.example.com/path/to/click-1
 ■トップ
 https://example.com/
 `;
-        const response = pickUrlsFromMessageBody(messageBody);
+        const response = pickUrlsFromMessageBody_(messageBody);
         expect(response).toStrictEqual([]);
       });
     });
