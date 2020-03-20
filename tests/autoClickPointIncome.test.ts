@@ -27,6 +27,24 @@ https://pointi.jp/
       const response = pickUrlsFromMessageBody_(messageBody);
       expect(response).toStrictEqual(pickedUrls);
     });
+
+    test('クイズ系の URL でも URL を返す', (): void => {
+      const messageBody = `
+▼メリメロクイズ回答で[ ３pt! ]
+https://pointi.jp/al/click_mail_magazine.php?no=1
+
+▼詳細はこちらから
+https://pointi.jp/dummy/url
+
+■トップ
+https://pointi.jp/
+`;
+      const pickedUrls = [
+        'https://pointi.jp/al/click_mail_magazine.php?no=1',
+      ];
+      const response = pickUrlsFromMessageBody_(messageBody);
+      expect(response).toStrictEqual(pickedUrls);
+    });
   });
 
   describe('invalid urls', (): void => {
