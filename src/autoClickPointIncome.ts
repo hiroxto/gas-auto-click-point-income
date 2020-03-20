@@ -2,7 +2,7 @@
 import GmailThread = GoogleAppsScript.Gmail.GmailThread;
 
 export function autoClickPointIncome (): void {
-  const threads = getGmailThreads();
+  const threads = getGmailThreads_();
 
   Logger.log(`Threads count : ${threads.length}`);
 
@@ -10,7 +10,7 @@ export function autoClickPointIncome (): void {
     const messages = thread.getMessages();
     const message = messages[0];
     const messageBody = message.getPlainBody();
-    const urls = pickUrlsFromMessageBody(messageBody);
+    const urls = pickUrlsFromMessageBody_(messageBody);
 
     if (urls.length === 0) {
       Logger.log('urls is empty.');
@@ -18,16 +18,16 @@ export function autoClickPointIncome (): void {
       return;
     }
 
-    urls.forEach(url => clickUrl(url));
+    urls.forEach(url => clickUrl_(url));
     thread.moveToTrash();
   });
 }
 
-export function getGmailThreads (): GmailThread[] {
+export function getGmailThreads_ (): GmailThread[] {
   return GmailApp.search('ポイントインカム クリック from:mag@pointi.jp');
 }
 
-export function pickUrlsFromMessageBody (messageBody: string): string[] {
+export function pickUrlsFromMessageBody_ (messageBody: string): string[] {
   const pointLines = messageBody.match(/クリックで(.+)ptゲット(\r\n|\n|\r)https(.+)(\r\n|\n|\r)/ig);
 
   if (pointLines === null) {
@@ -39,7 +39,7 @@ export function pickUrlsFromMessageBody (messageBody: string): string[] {
   });
 }
 
-export function clickUrl (url: string): boolean {
+export function clickUrl_ (url: string): boolean {
   Logger.log(`Click : ${url}`);
   try {
     UrlFetchApp.fetch(url, { followRedirects: true });
