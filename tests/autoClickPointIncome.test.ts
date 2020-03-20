@@ -5,23 +5,27 @@ describe('pickUrlsFromMessageBody', (): void => {
     test('should return urls.', (): void => {
       const messageBody = `
 ▼クリックで１ptゲット
-https://example.com/path/to/click-1
+https://pointi.jp/al/click_mail_magazine.php?num=1
 
 ▼クリックで１ptゲット
-https://example.com/path/to/click-2
+https://pointi.jp/al/click_mail_magazine.php?num=2
 
 ▼クリックで１ptゲット
-https://example.com/path/to/click-3
+https://pointi.jp/al/click_mail_magazine.php?num=3
 
 ▼詳細はこちらから
-https://dummy.example.com/path/to/click-1
+https://pointi.jp/dummy/url
 
 ■トップ
-https://example.com/
+https://pointi.jp/
 `;
-      const urls = ['https://example.com/path/to/click-1', 'https://example.com/path/to/click-2', 'https://example.com/path/to/click-3'];
+      const pickedUrls = [
+        'https://pointi.jp/al/click_mail_magazine.php?num=1',
+        'https://pointi.jp/al/click_mail_magazine.php?num=2',
+        'https://pointi.jp/al/click_mail_magazine.php?num=3',
+      ];
       const response = pickUrlsFromMessageBody_(messageBody);
-      expect(response).toStrictEqual(urls);
+      expect(response).toStrictEqual(pickedUrls);
     });
   });
 
@@ -30,19 +34,19 @@ https://example.com/
       test('should return empty.', (): void => {
         const messageBody = `
 ▼クリックで１ptゲット
-http://example.com/path/to/click-1
+http://pointi.jp/al/click_mail_magazine.php?num=1
 
 ▼クリックで１ptゲット
-http://example.com/path/to/click-2
+http://pointi.jp/al/click_mail_magazine.php?num=2
 
 ▼クリックで１ptゲット
-http://example.com/path/to/click-3
+http://pointi.jp/al/click_mail_magazine.php?num=3
 
 ▼詳細はこちらから
-https://dummy.example.com/path/to/click-1
+https://pointi.jp/dummy/url
 
 ■トップ
-https://example.com/
+https://pointi.jp/
 `;
         const response = pickUrlsFromMessageBody_(messageBody);
         expect(response).toStrictEqual([]);
@@ -53,16 +57,16 @@ https://example.com/
       test('should return empty array.', (): void => {
         const messageBody = `
 ▼詳細はこちらから
-https://example.com/path/to/click-1
+https://pointi.jp/dummy/1
 
 ▼詳細はこちらから
-https://example.com/path/to/click-2
+https://pointi.jp/dummy/2
 
 ▼詳細はこちらから
-https://example.com/path/to/click-3
+https://pointi.jp/dummy/3
 
 ▼詳細はこちらから
-https://dummy.example.com/path/to/click-1
+https://pointi.jp/dummy/url
 
 ■トップ
 https://example.com/
