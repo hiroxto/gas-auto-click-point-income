@@ -19,13 +19,13 @@ https://pointi.jp/dummy/url
 ■トップ
 https://pointi.jp/
 `;
-      const pickedUrls = [
+      const expectedUrls = [
         'https://pointi.jp/al/click_mail_magazine.php?num=1',
         'https://pointi.jp/al/click_mail_magazine.php?num=2',
         'https://pointi.jp/al/click_mail_magazine.php?num=3',
       ];
-      const response = pickUrlsFromMessageBody_(messageBody);
-      expect(response).toStrictEqual(pickedUrls);
+      const pickedUrls = pickUrlsFromMessageBody_(messageBody);
+      expect(pickedUrls).toStrictEqual(expectedUrls);
     });
 
     test('クイズ系の URL を抽出する', (): void => {
@@ -39,11 +39,11 @@ https://pointi.jp/dummy/url
 ■トップ
 https://pointi.jp/
 `;
-      const pickedUrls = [
+      const expectedUrls = [
         'https://pointi.jp/al/click_mail_magazine.php?no=1',
       ];
-      const response = pickUrlsFromMessageBody_(messageBody);
-      expect(response).toStrictEqual(pickedUrls);
+      const pickedUrls = pickUrlsFromMessageBody_(messageBody);
+      expect(pickedUrls).toStrictEqual(expectedUrls);
     });
   });
 
@@ -66,8 +66,8 @@ https://pointi.jp/dummy/url
 ■トップ
 https://pointi.jp/
 `;
-        const response = pickUrlsFromMessageBody_(messageBody);
-        expect(response).toStrictEqual([]);
+        const pickedUrls = pickUrlsFromMessageBody_(messageBody);
+        expect(pickedUrls).toStrictEqual([]);
       });
     });
 
@@ -89,8 +89,8 @@ https://pointi.jp/dummy/url
 ■トップ
 https://example.com/
 `;
-        const response = pickUrlsFromMessageBody_(messageBody);
-        expect(response).toStrictEqual([]);
+        const pickedUrls = pickUrlsFromMessageBody_(messageBody);
+        expect(pickedUrls).toStrictEqual([]);
       });
     });
   });
