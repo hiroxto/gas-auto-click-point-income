@@ -2,7 +2,7 @@
 import GmailThread = GoogleAppsScript.Gmail.GmailThread;
 
 export function autoClickPointIncome (): void {
-  const threads = getGmailThreads();
+  const threads = getGmailThreads_();
 
   Logger.log(`Threads count : ${threads.length}`);
 
@@ -23,7 +23,7 @@ export function autoClickPointIncome (): void {
   });
 }
 
-export function getGmailThreads (): GmailThread[] {
+export function getGmailThreads_ (): GmailThread[] {
   return GmailApp.search('ポイントインカム クリック from:mag@pointi.jp');
 }
 
