@@ -18,7 +18,7 @@ export function autoClickPointIncome (): void {
       return;
     }
 
-    urls.forEach(url => clickUrl(url));
+    urls.forEach(url => clickUrl_(url));
     thread.moveToTrash();
   });
 }
@@ -39,7 +39,7 @@ export function pickUrlsFromMessageBody_ (messageBody: string): string[] {
   });
 }
 
-export function clickUrl (url: string): boolean {
+export function clickUrl_ (url: string): boolean {
   Logger.log(`Click : ${url}`);
   try {
     UrlFetchApp.fetch(url, { followRedirects: true });
