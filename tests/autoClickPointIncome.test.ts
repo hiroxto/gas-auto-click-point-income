@@ -1,6 +1,6 @@
 import { pickUrlsFromMessageBody_ } from '~/autoClickPointIncome.ts';
 
-describe('pickUrlsFromMessageBody', (): void => {
+describe('pickUrlsFromMessageBody_', (): void => {
   describe('valid urls', (): void => {
     test('should return urls.', (): void => {
       const messageBody = `
