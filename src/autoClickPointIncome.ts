@@ -24,7 +24,7 @@ export function autoClickPointIncome (): void {
 }
 
 export function getGmailThreads_ (): GmailThread[] {
-  return GmailApp.search('ポイントインカム クリック from:mag@pointi.jp');
+  return GmailApp.search('click_mail_magazine.php from:mag@pointi.jp ');
 }
 
 export function pickUrlsFromMessageBody_ (messageBody: string): string[] {
