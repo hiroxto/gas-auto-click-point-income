@@ -4,6 +4,8 @@
 
 ポイントインカムのクリックでポイントが貰える URL を自動でクリックする.
 
+[hiroxto/point-site-tools](https://github.com/hiroxto/point-site-tools) に統合.
+
 ## Install
 
 ```sh
